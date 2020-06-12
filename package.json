@@ -1,0 +1,57 @@
+{
+  "name": "semweb",
+  "version": "0.0.2",
+  "description": "it's exr for web apps",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "dev": "lite-server",
+    "test": "mocha tests/lib/semWeb.test.js --timeout 120000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/speedrunner911/semWeb.git"
+  },
+  "keywords": [
+    "sem",
+    "semux",
+    "web3"
+  ],
+  "author": "speedrunner",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/speedrunner911/semWeb/issues"
+  },
+  "homepage": "https://github.com/speedrunner911/semWeb#readme",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "bn.js": "^5.1.1",
+    "chai": "^4.2.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "ether": "0.0.9",
+    "ethers": "^4.0.45",
+    "eventemitter3": "^4.0.0",
+    "js-sha3": "^0.8.0",
+    "jssha": "^2.3.1",
+    "keccak256": "^1.0.0",
+    "lite-server": "^2.3.0",
+    "long": "^4.0.0",
+    "pg": "^7.4.3",
+    "request": "^2.87.0",
+    "request-promise": "^4.2.2",
+    "semux-js": "^1.7.1",
+    "sequelize": "^4.38.0",
+    "tronweb": "^2.8.1",
+    "validator": "^12.1.0",
+    "web3": "^1.2.6"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-prettier": "^3.1.2",
+    "prettier": "^1.19.1"
+  }
+}
