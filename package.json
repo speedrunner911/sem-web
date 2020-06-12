@@ -42,7 +42,7 @@
     "request": "^2.87.0",
     "request-promise": "^4.2.2",
     "semux-js": "^1.7.1",
-    "sequelize": "^4.38.0",
+    "sequelize": "^5.15.1",
     "tronweb": "^2.8.1",
     "validator": "^12.1.0",
     "web3": "^1.2.6"
