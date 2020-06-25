@@ -1,0 +1,433 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>semWeb.sem &#8212; semWeb 1.0.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="semWeb-utils.html" />
+    <link rel="prev" title="semWeb.js - Semux JavaScript API" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="semweb-sem">
+<span id="sem"></span><h1>semWeb.sem<a class="headerlink" href="#semweb-sem" title="Permalink to this headline">¶</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">semWeb-sem</span></code> package allows you to interact with an Semux blockchain and Semux smart contracts.</p>
+<hr class="docutils" />
+<div class="section" id="getblock">
+<span id="sem-getblock"></span><h2>getBlock<a class="headerlink" href="#getblock" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">semWeb</span><span class="p">.</span><span class="nx">sem</span><span class="p">.</span><span class="nx">getBlock</span><span class="p">(</span><span class="nx">blockHashOrBlockNumber</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Returns a block matching the block number or block hash.</p>
+<div class="section" id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">String|Number|BN|BigNumber</span></code> - The block number or block hash. Or the string <code class="docutils literal notranslate"><span class="pre">&quot;earliest&quot;</span></code> or  <code class="docutils literal notranslate"><span class="pre">&quot;latest&quot;</span></code> as in the <span class="xref std std-ref">default block parameter</span>.</p></li>
+</ol>
+</div>
+<div class="section" id="returns">
+<h3>Returns<a class="headerlink" href="#returns" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Promise</span></code> returns <code class="docutils literal notranslate"><span class="pre">Object</span></code> - The block object:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">hash</span></code> 32 Bytes - <code class="docutils literal notranslate"><span class="pre">String</span></code>: Hash of the block.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">number</span></code> - <code class="docutils literal notranslate"><span class="pre">String</span></code>: The block number.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">view</span></code> - <code class="docutils literal notranslate"><span class="pre">Number</span></code>: The view number</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">coinbase</span></code> - <code class="docutils literal notranslate"><span class="pre">String</span></code>: The address of the beneficiary to whom the staking rewards were given.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">parentHash</span></code>- 32 Bytes - <code class="docutils literal notranslate"><span class="pre">String</span></code>: Hash of the parent block.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">timestamp</span></code> - <code class="docutils literal notranslate"><span class="pre">String</span></code>: The unix timestamp for when the block was collated.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">transactionsRoot</span></code> 32 Bytes - <code class="docutils literal notranslate"><span class="pre">String</span></code>: The root of the transaction trie of the block.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">resultsRoot</span></code> - 32 Bytes - <code class="docutils literal notranslate"><span class="pre">String</span></code>: The root of the final state trie of the block.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stateRoot</span></code> - 32 Bytes - <code class="docutils literal notranslate"><span class="pre">String</span></code>: The root of the state trie of the block.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code> - <code class="docutils literal notranslate"><span class="pre">String</span></code> : The “data” field of this block.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">transactions</span></code> - <code class="docutils literal notranslate"><span class="pre">Array</span></code>: Array of transaction objects.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">semWeb</span><span class="p">.</span><span class="nx">sem</span><span class="p">.</span><span class="nx">getBlock</span><span class="p">(</span><span class="mi">4261</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">);</span>
+
+<span class="o">&gt;</span> <span class="p">{</span>
+  <span class="nx">hash</span><span class="o">:</span> <span class="s1">&#39;0x2a57fa6ae468a1c540bf75b971685b6d6c1d3ba679c57ca683580f35177c12b9&#39;</span><span class="p">,</span>
+  <span class="nx">number</span><span class="o">:</span> <span class="s1">&#39;4261&#39;</span><span class="p">,</span>
+  <span class="nx">view</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="nx">coinbase</span><span class="o">:</span> <span class="s1">&#39;0xc5f32c2231ff2b60cdfa9c0d3a9c2e71774de472&#39;</span><span class="p">,</span>
+  <span class="nx">parentHash</span><span class="o">:</span> <span class="s1">&#39;0x6709b3d6100df120e9b1c4f588a3ac12a1f6080825300d8223be84abda0f4072&#39;</span><span class="p">,</span>
+  <span class="nx">timestamp</span><span class="o">:</span> <span class="s1">&#39;1562716949721&#39;</span><span class="p">,</span>
+  <span class="nx">transactionsRoot</span><span class="o">:</span> <span class="s1">&#39;0x0000000000000000000000000000000000000000000000000000000000000000&#39;</span><span class="p">,</span>
+  <span class="nx">resultsRoot</span><span class="o">:</span> <span class="s1">&#39;0x0000000000000000000000000000000000000000000000000000000000000000&#39;</span><span class="p">,</span>
+  <span class="nx">stateRoot</span><span class="o">:</span> <span class="s1">&#39;0x0000000000000000000000000000000000000000000000000000000000000000&#39;</span><span class="p">,</span>
+  <span class="nx">data</span><span class="o">:</span> <span class="s1">&#39;0x&#39;</span><span class="p">,</span>
+  <span class="nx">transactions</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nx">hash</span><span class="o">:</span> <span class="s1">&#39;0xadadc78e064f7e78016cf47bc062c47404f0db3e451212c7c2c9e0df92b67dc1&#39;</span><span class="p">,</span>
+      <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;COINBASE&#39;</span><span class="p">,</span>
+      <span class="nx">from</span><span class="o">:</span> <span class="s1">&#39;0xce6f439a900346a4265b37a1046a625e9fd6d249&#39;</span><span class="p">,</span>
+      <span class="nx">to</span><span class="o">:</span> <span class="s1">&#39;0xc5f32c2231ff2b60cdfa9c0d3a9c2e71774de472&#39;</span><span class="p">,</span>
+      <span class="nx">value</span><span class="o">:</span> <span class="s1">&#39;3000000000&#39;</span><span class="p">,</span>
+      <span class="nx">fee</span><span class="o">:</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span>
+      <span class="nx">nonce</span><span class="o">:</span> <span class="s1">&#39;4261&#39;</span><span class="p">,</span>
+      <span class="nx">timestamp</span><span class="o">:</span> <span class="s1">&#39;1562716949721&#39;</span><span class="p">,</span>
+      <span class="nx">data</span><span class="o">:</span> <span class="s1">&#39;0x&#39;</span><span class="p">,</span>
+      <span class="nx">gas</span><span class="o">:</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span>
+      <span class="nx">gasPrice</span><span class="o">:</span> <span class="s1">&#39;0&#39;</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="getblocktransactioncount">
+<h2>getBlockTransactionCount<a class="headerlink" href="#getblocktransactioncount" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">semWeb</span><span class="p">.</span><span class="nx">sem</span><span class="p">.</span><span class="nx">getBlockTransactionCount</span><span class="p">(</span><span class="nx">blockHashOrBlockNumber</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Returns the number of transaction in a given block.</p>
+<div class="section" id="id1">
+<h3>Parameters<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">String|Number|BN|BigNumber</span></code> - The block number or hash. Or the string <code class="docutils literal notranslate"><span class="pre">&quot;earliest&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;latest&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;pending&quot;</span></code> as in the <span class="xref std std-ref">default block parameter</span>.</p></li>
+</ol>
+</div>
+<div class="section" id="id2">
+<h3>Returns<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Promise</span></code> returns <code class="docutils literal notranslate"><span class="pre">Number</span></code> - The number of transactions in the given block.</p>
+</div>
+<div class="section" id="id3">
+<h3>Example<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">semWeb</span><span class="p">.</span><span class="nx">sem</span><span class="p">.</span><span class="nx">getBlockTransactionCount</span><span class="p">(</span><span class="s2">&quot;0xcea899c800996d26963191aa7bc10102c726f8f67ef6fe1375af9ebfc14e81ca&quot;</span><span class="p">)</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">);</span>
+<span class="o">&gt;</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="gettransaction">
+<h2>getTransaction<a class="headerlink" href="#gettransaction" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">semWeb</span><span class="p">.</span><span class="nx">sem</span><span class="p">.</span><span class="nx">getTransaction</span><span class="p">(</span><span class="nx">transactionHash</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Returns a transaction matching the given transaction hash.</p>
+<div class="section" id="id4">
+<h3>Parameters<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">String</span></code> - The transaction hash.</p></li>
+</ol>
+</div>
+<div class="section" id="sem-gettransaction-return">
+<span id="id5"></span><h3>Returns<a class="headerlink" href="#sem-gettransaction-return" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Promise</span></code> returns <code class="docutils literal notranslate"><span class="pre">Object</span></code> - A transaction object its hash <code class="docutils literal notranslate"><span class="pre">transactionHash</span></code>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">hash</span></code> 32 Bytes - <code class="docutils literal notranslate"><span class="pre">String</span></code>: Hash of the transaction.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code> - <code class="docutils literal notranslate"><span class="pre">String</span></code> : Transaction type.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">from</span></code> - <code class="docutils literal notranslate"><span class="pre">String</span></code>: Address of the sender.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">to</span></code> - <code class="docutils literal notranslate"><span class="pre">String</span></code>: Address of the receiver. <code class="docutils literal notranslate"><span class="pre">null</span></code> if it’s a contract creation transaction.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">value</span></code> - <code class="docutils literal notranslate"><span class="pre">String</span></code>: Value transferred in wei.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fee</span></code> - <code class="docutils literal notranslate"><span class="pre">String</span></code> : Amount of fee.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nonce</span></code> - <code class="docutils literal notranslate"><span class="pre">String</span></code>: The number of transactions made by the sender prior to this one.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">timestamp</span></code> - <code class="docutils literal notranslate"><span class="pre">String</span></code>: The unix timestamp for when the transaction was complete.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code> - <code class="docutils literal notranslate"><span class="pre">String</span></code>: The data sent along with the transaction.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gas</span></code> - <code class="docutils literal notranslate"><span class="pre">String</span></code>: Gas provided by the sender.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gasPrice</span></code> - <code class="docutils literal notranslate"><span class="pre">String</span></code>: Gas price provided by the sender in <span class="xref std std-ref">wei</span>.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id6">
+<h3>Example<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">semWeb</span><span class="p">.</span><span class="nx">sem</span><span class="p">.</span><span class="nx">getTransaction</span><span class="p">(</span><span class="s1">&#39;0xb076efc93e29a2201b8f694b0f42817ee5358bb50f4b45e3bd00e7b926931f70&#39;</span><span class="p">)</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">);</span>
+
+<span class="o">&gt;</span> <span class="p">{</span>
+  <span class="nx">hash</span><span class="o">:</span> <span class="s1">&#39;0xb076efc93e29a2201b8f694b0f42817ee5358bb50f4b45e3bd00e7b926931f70&#39;</span><span class="p">,</span>
+  <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;TRANSFER&#39;</span><span class="p">,</span>
+  <span class="nx">from</span><span class="o">:</span> <span class="s1">&#39;0xa912c9080368d4ad1a8f2d8952d51ec278336fe1&#39;</span><span class="p">,</span>
+  <span class="nx">to</span><span class="o">:</span> <span class="s1">&#39;0xfdfc77d92c0981602a30629db30f09ff4ddbec49&#39;</span><span class="p">,</span>
+  <span class="nx">value</span><span class="o">:</span> <span class="s1">&#39;3734603191&#39;</span><span class="p">,</span>
+  <span class="nx">fee</span><span class="o">:</span> <span class="s1">&#39;5000000&#39;</span><span class="p">,</span>
+  <span class="nx">nonce</span><span class="o">:</span> <span class="s1">&#39;707&#39;</span><span class="p">,</span>
+  <span class="nx">timestamp</span><span class="o">:</span> <span class="s1">&#39;1590996601768&#39;</span><span class="p">,</span>
+  <span class="nx">data</span><span class="o">:</span> <span class="s1">&#39;0x746573745f736176656c&#39;</span><span class="p">,</span>
+  <span class="nx">gas</span><span class="o">:</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span>
+  <span class="nx">gasPrice</span><span class="o">:</span> <span class="s1">&#39;0&#39;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="gettransactionfromblock">
+<h2>getTransactionFromBlock<a class="headerlink" href="#gettransactionfromblock" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">getTransactionFromBlock</span><span class="p">(</span><span class="nx">hashStringOrNumber</span><span class="p">,</span> <span class="nx">indexNumber</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Returns a transaction based on a block hash or number and the transaction’s index position.</p>
+<div class="section" id="id7">
+<h3>Parameters<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">String|Number|BN|BigNumber</span></code> - A block number or hash. Or the string <code class="docutils literal notranslate"><span class="pre">&quot;earliest&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;latest&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;pending&quot;</span></code> as in the <span class="xref std std-ref">default block parameter</span>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Number</span></code> - The transaction’s index position.</p></li>
+</ol>
+</div>
+<div class="section" id="id8">
+<h3>Returns<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Promise</span></code> returns <code class="docutils literal notranslate"><span class="pre">Object</span></code> - A transaction object, see <a class="reference internal" href="#sem-gettransaction-return"><span class="std std-ref">semWeb.sem.getTransaction</span></a>:</p>
+</div>
+<div class="section" id="id9">
+<h3>Example<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">transaction</span> <span class="o">=</span> <span class="nx">semWeb</span><span class="p">.</span><span class="nx">sem</span><span class="p">.</span><span class="nx">getTransactionFromBlock</span><span class="p">(</span><span class="mi">123</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">);</span>
+<span class="o">&gt;</span> <span class="c1">// see web3.eth.getTransaction</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+</div>
+</div>
+<div class="section" id="gettransactioncount">
+<span id="sem-gettransactioncount"></span><h2>getTransactionCount<a class="headerlink" href="#gettransactioncount" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">semWeb</span><span class="p">.</span><span class="nx">sem</span><span class="p">.</span><span class="nx">getTransactionCount</span><span class="p">(</span><span class="nx">address</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Get the number of transactions sent from this address.</p>
+<div class="section" id="id10">
+<h3>Parameters<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">String</span></code> - The address to get the numbers of transactions from.</p></li>
+</ol>
+</div>
+<div class="section" id="id11">
+<h3>Returns<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Promise</span></code> returns <code class="docutils literal notranslate"><span class="pre">Number</span></code> - The number of transactions sent from the given address.</p>
+</div>
+<div class="section" id="id12">
+<h3>Example<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">semWeb</span><span class="p">.</span><span class="nx">sem</span><span class="p">.</span><span class="nx">getTransactionCount</span><span class="p">(</span><span class="s2">&quot;0xc5f32c2231ff2b60cdfa9c0d3a9c2e71774de472&quot;</span><span class="p">)</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">);</span>
+<span class="o">&gt;</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+</div>
+</div>
+<div class="section" id="getbalance">
+<span id="sem-getbalance"></span><h2>getBalance<a class="headerlink" href="#getbalance" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">semWeb</span><span class="p">.</span><span class="nx">sem</span><span class="p">.</span><span class="nx">getBalance</span><span class="p">(</span><span class="nx">address</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Get the number of transactions sent from this address.</p>
+<div class="section" id="id13">
+<h3>Parameters<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">String</span></code> - The address to get the balance of address.</p></li>
+</ol>
+</div>
+<div class="section" id="id14">
+<h3>Returns<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Promise</span></code> returns <code class="docutils literal notranslate"><span class="pre">Object</span></code> - The object that contains information about given address.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">address</span></code> - <code class="docutils literal notranslate"><span class="pre">String</span></code>: The account address.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">available</span></code> - <code class="docutils literal notranslate"><span class="pre">String</span></code> : Number of available coins.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">locked</span></code> - <code class="docutils literal notranslate"><span class="pre">String</span></code>: Number of locked coins.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nonce</span></code> - <code class="docutils literal notranslate"><span class="pre">String</span></code> : Nonce of address.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">transactionCount</span></code> - <code class="docutils literal notranslate"><span class="pre">Number</span></code> : Number of confirmed transactions.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">internalTransactionCount</span></code> - <code class="docutils literal notranslate"><span class="pre">Number</span></code> : Number of internal transactions.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pendingTransactionCount</span></code> - <code class="docutils literal notranslate"><span class="pre">Number</span></code> : Number of pending transactions.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id15">
+<h3>Example<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">semWeb</span><span class="p">.</span><span class="nx">sem</span><span class="p">.</span><span class="nx">getBalance</span><span class="p">(</span><span class="s2">&quot;0xc5f32c2231ff2b60cdfa9c0d3a9c2e71774de472&quot;</span><span class="p">)</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">);</span>
+<span class="o">&gt;</span> <span class="p">{</span>
+  <span class="nx">address</span><span class="o">:</span> <span class="s1">&#39;0xc5f32c2231ff2b60cdfa9c0d3a9c2e71774de472&#39;</span><span class="p">,</span>
+  <span class="nx">available</span><span class="o">:</span> <span class="s1">&#39;97453607100000&#39;</span><span class="p">,</span>
+  <span class="nx">locked</span><span class="o">:</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span>
+  <span class="nx">nonce</span><span class="o">:</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span>
+  <span class="nx">transactionCount</span><span class="o">:</span> <span class="mi">83324</span><span class="p">,</span>
+  <span class="nx">internalTransactionCount</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="nx">pendingTransactionCount</span><span class="o">:</span> <span class="mi">0</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+</div>
+</div>
+<div class="section" id="getnonce">
+<span id="sem-getnonce"></span><h2>getNonce<a class="headerlink" href="#getnonce" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">semWeb</span><span class="p">.</span><span class="nx">sem</span><span class="p">.</span><span class="nx">getNonce</span><span class="p">(</span><span class="nx">address</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Get the nonce of address.</p>
+<div class="section" id="id16">
+<h3>Parameters<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">String</span></code> - The address to get the nonce.</p></li>
+</ol>
+</div>
+<div class="section" id="id17">
+<h3>Returns<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Promise</span></code> returns <code class="docutils literal notranslate"><span class="pre">Number</span></code> - The number of nonce.</p>
+</div>
+<div class="section" id="id18">
+<h3>Example<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">semWeb</span><span class="p">.</span><span class="nx">sem</span><span class="p">.</span><span class="nx">getNonce</span><span class="p">(</span><span class="s2">&quot;0xc5f32c2231ff2b60cdfa9c0d3a9c2e71774de472&quot;</span><span class="p">)</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">);</span>
+<span class="o">&gt;</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+</div>
+</div>
+<div class="section" id="getnetworkinfo">
+<span id="sem-getnetworkinfo"></span><h2>getNetworkInfo<a class="headerlink" href="#getnetworkinfo" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">semWeb</span><span class="p">.</span><span class="nx">sem</span><span class="p">.</span><span class="nx">getNetworkInfo</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Get state of current network.</p>
+<div class="section" id="id19">
+<h3>Returns<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Promise</span></code> returns <code class="docutils literal notranslate"><span class="pre">Object</span></code> - The object that contains information about connected network.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">network</span></code> - <code class="docutils literal notranslate"><span class="pre">String</span></code>: Type of network.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">capabilities</span></code> - <code class="docutils literal notranslate"><span class="pre">Array</span></code> : The array of semux client.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">clientId</span></code> - <code class="docutils literal notranslate"><span class="pre">String</span></code>: The string of client data.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">coinbase</span></code> - <code class="docutils literal notranslate"><span class="pre">String</span></code> : The address of validator who minted latest block.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">latestBlockNumber</span></code> - <code class="docutils literal notranslate"><span class="pre">String</span></code> : The number of latest block.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">latestBlockHash</span></code> - <code class="docutils literal notranslate"><span class="pre">String</span></code> : The hash of latest block.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">activePeers</span></code> - <code class="docutils literal notranslate"><span class="pre">Number</span></code> : The number of active peers.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pendingTransactions</span></code> - <code class="docutils literal notranslate"><span class="pre">Number</span></code> : The number of pending transactions.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id20">
+<h3>Example<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">semWeb</span><span class="p">.</span><span class="nx">sem</span><span class="p">.</span><span class="nx">getNetworkInfo</span><span class="p">()</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">);</span>
+<span class="o">&gt;</span> <span class="p">{</span>
+  <span class="nx">network</span><span class="o">:</span> <span class="s1">&#39;TESTNET&#39;</span><span class="p">,</span>
+  <span class="nx">capabilities</span><span class="o">:</span> <span class="p">[</span> <span class="s1">&#39;SEMUX&#39;</span><span class="p">,</span> <span class="s1">&#39;FAST_SYNC&#39;</span> <span class="p">],</span>
+  <span class="nx">clientId</span><span class="o">:</span> <span class="s1">&#39;Semux/v2.1.1-e8314f7/Linux/amd64&#39;</span><span class="p">,</span>
+  <span class="nx">coinbase</span><span class="o">:</span> <span class="s1">&#39;0x23a6049381fd2cfb0661d9de206613b83d53d7df&#39;</span><span class="p">,</span>
+  <span class="nx">latestBlockNumber</span><span class="o">:</span> <span class="s1">&#39;907277&#39;</span><span class="p">,</span>
+  <span class="nx">latestBlockHash</span><span class="o">:</span> <span class="s1">&#39;0x957064447d9ab3f26be9cbceec5f2e87a416849f2b042e78d89f8636909206f2&#39;</span><span class="p">,</span>
+  <span class="nx">activePeers</span><span class="o">:</span> <span class="mi">8</span><span class="p">,</span>
+  <span class="nx">pendingTransactions</span><span class="o">:</span> <span class="mi">0</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">semWeb</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">semWeb.sem</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#getblock">getBlock</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getblocktransactioncount">getBlockTransactionCount</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gettransaction">getTransaction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gettransactionfromblock">getTransactionFromBlock</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gettransactioncount">getTransactionCount</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getbalance">getBalance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getnonce">getNonce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getnetworkinfo">getNetworkInfo</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">semWeb.js - Semux JavaScript API</a></li>
+      <li>Next: <a href="semWeb-utils.html" title="next chapter">&lt;no title&gt;</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, speedrunner.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.1.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/semWeb-sem.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
