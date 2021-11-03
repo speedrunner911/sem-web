@@ -44,7 +44,7 @@
     "semux-js": "^1.7.1",
     "sequelize": "^4.38.0",
     "tronweb": "^2.8.1",
-    "validator": "^12.1.0",
+    "validator": "^13.7.0",
     "web3": "^1.2.6"
   },
   "devDependencies": {
